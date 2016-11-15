@@ -32,6 +32,7 @@ body{
   margin: 0 auto;;;
   padding: 0;
   max-width: 640px;
+  font-size: 16px;
 }
 a{
   color:#505050;

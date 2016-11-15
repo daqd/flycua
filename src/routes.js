@@ -15,7 +15,7 @@ import flightList from './views/book/flightList'
 
   export default [
   {
-    path: '/', redirect: '/index',name:"首页"
+    path: '/', redirect: '/index'
   },
   {
     path: '/index', component: home,name:"首页"
