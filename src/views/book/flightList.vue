@@ -33,35 +33,110 @@
         </ul>
       </div>
   </article>
+  <!-- 航班列表信息 -->
+  <article class="flightListItem-Wrapper" v-for="(item,index) in shoppingRes.goShoppingRes"  @click="toShowDetails(index)">
+    <!-- 单条航班信息左侧部分 -->
+    <div class="flightList-Item flightList-Item-left">
+      <!-- 航班号 -->
+      <div class="flightList-Item-No">
+        {{item.segments[0].airline}}{{item.segments[0].fltNo}}
+      </div>
+      <!-- 出发日期 -->
+      <div class="flightList-Item-orgDate">
+        {{item.segments[0].takeoffTimeShow.slice(11,16)}}
+      </div>
+      <!-- 出发城市 -->
+      <div class="flightList-Item-orgCity">
+        {{item.segments[0].orgName}}
+      </div>
+    </div>
+    <!-- 航班经停信息 -->
+    <div class="flightList-Item flightList-Item-center">
+      <!-- 飞行时间 -->
+      <div class="flightList-Item-flightTime">
+        {{item.segments[0].durationMin}}
+      </div>
+      <!-- 经停或者直飞 -->
+      <div class="flightList-Item-isStop" v-if="item.segments[0].stop>=1">
+        经停
+      </div>
+      <div class="flightList-Item-isStop" v-else>
+        直飞
+      </div>
+      <!-- 箭头图标 -->
+      <div class="flightList-Item-Icon">
+
+      </div>
+      <!-- 经停城市 -->
+      <div class="flightList-Item-stopCity">
+        {{item.segments[0].stopCityName}}
+      </div>
+    </div>
+    <!-- 航班到达信息 -->
+    <div class="flightList-Item flightList-Item-right">
+      <!-- 机型 -->
+      <div class="flightList-Item-type">
+        机型{{item.segments[0].planeStyle}}
+      </div>
+      <!-- 到达时间 -->
+      <div class="flightList-Item-dstTime">
+        {{item.segments[0].arrTimeShow.slice(11,16)}}
+      </div>
+      <!-- 到达城市 -->
+      <div class="flightList-Item-dstCity">
+        {{item.segments[0].dstName}}
+      </div>
+    </div>
+    <!-- 航班预订区域 -->
+    <div class="flightList-Item flightList-Item-order">
+      <!-- 最低价格 -->
+      <div class="flightList-Item-minPrice">
+        ￥{{item.priceAmount}}
+      </div>
+      <!-- 座位数量状态 -->
+      <div class="flightList-Item-Status">
+        <span>座位充足</span>
+      </div>
+      <!-- 查看更多 -->
+      <div class="flightList-Item-readMore">
+        <div class="flightList-Item-readMore-content">
+          查看更多
+        </div>
+      </div>
+    </div>
+  </article>
 </div>
 </template>
 
 <script>
 import Vue from 'vue';
+import shoppingRes from '../../mocks/book/flightList.json';
+console.log(shoppingRes);
 export default {
   data() {
     return {
       pageName:'',
       popupVisible:false,
       parameter:'',
+      shoppingRes:shoppingRes,
       lowPrice:[
         {
           className:'grayBac',
           date:'2016-11-16',
           week:'星期一',
-          price:333
+          price:333.00
         },
         {
           className:'blueBac',
           date:'2016-11-17',
           week:'星期二',
-          price:444
+          price:444.00
         },
         {
           className:'yellowBac',
           date:'2016-11-18',
           week:'星期三',
-          price:555
+          price:555.00
         },
       ]
     };
@@ -74,13 +149,27 @@ export default {
       //var Tip = setTimeout(function(){vm.$data.popupVisible=false},3000);
     })
   },
-  computed: {},
+  computed: {
+
+  },
   created:function(){
     this.$data.pageName = this.$route.name;
+
+    this.$data.shoppingRes = shoppingRes;
+
   },
   ready() {},
   attached() {},
-  methods: {},
+  methods: {
+    toShowDetails(index){
+      //设置上一次点击关闭
+      this.$data.shoppingRes.goShoppingRes[this.$data.prevClickIndex].isShow = false;
+      this.$data.shoppingRes.goShoppingRes[index].isShow = !this.$data.shoppingRes.goShoppingRes[index].isShow;
+      //存储本地点击的Index
+      this.$data.prevClickIndex = index;
+      console.log(this.$data.shoppingRes.goShoppingRes[0].isShow+"-"+this.$data.shoppingRes.goShoppingRes[1].isShow);
+    }
+  },
   components: {}
 };
 </script>
@@ -104,13 +193,20 @@ export default {
 .purpleBac{
   background-color:#a06daf;
 }
+.purpleBac ul{
+    display:block;
+    width: 60%;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
 .purpleBac ul li{
   display: block;
   width: 50%;
-  height:40px;
+  height:30px;
   float: left;
   text-align: center;
-  line-height:40px;
+  line-height:30px;
   font-size: 18px;
 }
 .priceDate{
@@ -136,4 +232,110 @@ export default {
   float: left;
 }
 
+.flightListItem-Wrapper{
+  width: 100%;
+  height: 135px;
+  float: left;
+  background: #f3f3f3;
+  margin-top: 10px;
+  border-top: 1px solid #c9c9c9;
+  border-bottom: 1px solid #c9c9c9;
+}
+.flightList-Item{
+  text-align: right;
+  width: 25%;
+  height: 135px;
+  float: left;
+}
+.flightList-Item-left{
+  width: 24%;
+  /*background-color: blue;*/
+}
+.flightList-Item-No,
+.flightList-Item-orgCity,
+.flightList-Item-flightTime,
+.flightList-Item-isStop,
+.flightList-Item-stopCity,
+.flightList-Item-type,
+.flightList-Item-dstCity,
+.flightList-Item-minPrice,
+.flightList-Item-Status{
+  width: 100%;
+  height: 40px;
+  float: left;
+  line-height: 40px;
+}
+.flightList-Item-orgDate,.flightList-Item-dstTime{
+  width: 100%;
+  height: 50px;
+  float: left;
+  line-height: 50px;
+  color: #df3538;
+  font-size:30px;
+}
+.flightList-Item-orgCity{
+
+}
+/*航班经停信息*/
+.flightList-Item-center{
+  /*background-color: green;*/
+}
+.flightList-Item-flightTime,
+.flightList-Item-isStop,
+.flightList-Item-stopCity,
+.flightList-Item-minPrice,
+.flightList-Item-Status{
+  text-align: center;
+}
+.flightList-Item-Icon{
+  width: 100%;
+  height: 10px;
+  float: left;
+  background: url("../../assets/book/arrow.png") no-repeat center center;
+  background-size: 60px;
+}
+/*航班到达信息*/
+.flightList-Item-right{
+  width: 30%;
+  /*background-color:#a06daf;*/
+}
+.flightList-Item-type,
+.flightList-Item-dstTime,.flightList-Item-dstCity{
+  text-align: left;
+}
+
+/*航班预订区域*/
+.flightList-Item-order{
+  width: 20%;
+  /*background-color:#ff9703;*/
+}
+.flightList-Item-minPrice{
+  font-size: 20px;
+  color: #df3538;
+}
+.flightList-Item-Status span{
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #00ade7;
+    color: #FFF;
+    margin-top: 10px;
+}
+.flightList-Item-readMore{
+    width: 100%;
+    height: 55px;
+    float: left;
+    background: url("../../assets/book/nav.png") no-repeat 85% 60%;
+    background-size:25px;
+}
+.flightList-Item-readMore-content{
+  width: 40px;
+  height: 30px;
+  font-size: 14px;
+  color: #c9c9c9;
+  margin-top: 15px;
+}
 </style>

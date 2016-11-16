@@ -109,7 +109,7 @@
 <script>
 import Vue from 'vue';
 import { Swipe, SwipeItem , Button , Popup , Picker ,Toast } from 'mint-ui';
-
+import {getDay,getNextDay} from '../js/common';
 Vue.component(Button.name, Button);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
@@ -206,7 +206,7 @@ export default {
           break;
           case "orgDate":
             vm.$data.flightDetails.orgDate = to.query.calendarItem;
-            vm.$data.flightDetails.dstDate = vm.getNextDay(to.query.calendarItem);
+            vm.$data.flightDetails.dstDate = getNextDay(to.query.calendarItem);
           break;
           case "dstDate":
             vm.$data.flightDetails.dstDate = to.query.calendarItem;
@@ -232,9 +232,9 @@ export default {
       // });
 
       //初始化出发日期为今天的日期
-      this.$data.flightDetails.orgDate = this.getDay(0);
+      this.$data.flightDetails.orgDate = getDay(0);
       //初始化到达日期为明天的日期
-      this.$data.flightDetails.dstDate = this.getDay(1);
+      this.$data.flightDetails.dstDate = getDay(1);
     },
     attached() {},
     methods: {
@@ -265,26 +265,6 @@ export default {
         [this.$data.flightDetails.orgCityCode,this.$data.flightDetails.dstCityCode] = [this.$data.flightDetails.dstCityCode,this.$data.flightDetails.orgCityCode];
       },
 
-      //获取今天的日期
-      getDay(day){
-      	   var today = new Date();
-      	   var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
-      	   today.setTime(targetday_milliseconds);
-      	   var tYear = today.getFullYear();
-      	   var tMonth = today.getMonth();
-      	   var tDate = today.getDate();
-      	   tMonth = this.doHandleMonth(tMonth + 1);
-      	   tDate = this.doHandleMonth(tDate);
-      	   return tYear+"/"+tMonth+"/"+tDate;
-      },
-
-      doHandleMonth(month){
-      	   var m = month;
-      	   if(month.toString().length == 1){
-      	      m = "0" + month;
-      	   }
-      	   return m;
-      },
       //执行查询
       toDoSearch(){
         if(this.$data.flightDetails.orgCityCode == this.$data.flightDetails.dstCityCode){
@@ -293,29 +273,7 @@ export default {
           this.$router.push({path:'/book/flightList',query:{flightDetails:this.$data.flightDetails,passengerNum:this.$data.passengerNum}});
         };
       },
-      //获取指定日期的后一天
-      getNextDay(d){
-        d = new Date(d);
-        d = +d + 1000*60*60*24;
-        d = new Date(d);
-        var mon,
-        	day;
 
-        if((d.getMonth()-0+1)>=10){
-        	mon = d.getMonth()-0+1;
-        }else{
-        	mon = "0"+(d.getMonth()-0+1);
-        };
-
-        if((d.getDate()-0)>=10){
-        	day = d.getDate();
-        }else{
-        	day = "0"+d.getDate();
-        };
-        //return d;
-        //格式化
-        return d.getFullYear()+"/"+mon+"/"+day;
-    }
 
     },
     components: {
