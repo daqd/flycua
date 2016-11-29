@@ -12,6 +12,8 @@ import home from './views/home'
 import flightQuery from './views/book/flightQuery'
 // 航班列表页
 import flightList from './views/book/flightList'
+// 订单填写页
+import fillInOrder from './views/book/fillInOrder'
 
   export default [
   {
@@ -31,5 +33,8 @@ import flightList from './views/book/flightList'
   },
   {
     path: '/book/flightList', component: flightList,name:"航班列表"
-  }
+  },
+  {
+    path: '/book/bookFillInOrder', component: fillInOrder,name:"订单填写"
+  },
 ];

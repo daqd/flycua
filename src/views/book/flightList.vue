@@ -131,7 +131,9 @@
           <!-- 预订按钮 -->
           <div class="SeatItemBtn">
             <div class="border-right"></div>
-            <span>预订</span>
+            <router-link :to="{ path: '/book/bookFillInOrder'}">
+              <span>预订</span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -200,13 +202,13 @@ export default {
     toShowDetails(index){
       let goShoppingRes = this.$data.shoppingRes.goShoppingRes;
       for(let i=0;i<goShoppingRes.length;i++){
-        goShoppingRes[i].OpenClose = (i!=index)?false:true;
+        this.$set(goShoppingRes[i],'OpenClose',((i!=index)?false:true));
       }
       console.log(goShoppingRes);
     },
     initOpenClose(){
       for (var i = 0; i < this.$data.shoppingRes.goShoppingRes.length; i++) {
-        this.$data.shoppingRes.goShoppingRes[i].OpenClose=false;
+        this.$set(this.$data.shoppingRes.goShoppingRes[i],'OpenClose',false);
       }
     }
   },
@@ -285,6 +287,7 @@ export default {
   height: 135px;
   float: left;
   background: #f3f3f3;
+  border-bottom: 1px solid #c9c9c9;
 }
 .flightList-Item{
   text-align: right;
