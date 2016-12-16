@@ -26,7 +26,11 @@ module.exports = {
       'vue$': 'vue/dist/vue',
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'store':path.resolve(__dirname,'../src/vuex/store'),
+      'getters':path.resolve(__dirname,'../src/vuex/getters'),
+      'actions':path.resolve(__dirname,'../src/vuex/actions'),
+      'mock':path.resolve(__dirname,'../src/mock')
     }
   },
   resolveLoader: {

@@ -11,6 +11,7 @@ import Vue from 'vue';
 import Header from 'mint-ui/lib/Header';
 import Container from './components/container.vue';
 import foot from './components/footer.vue';
+
 Vue.component('appHeader', Header);
 
 export default {
@@ -29,7 +30,7 @@ export default {
   padding: 0
 }
 body{
-  margin: 0 auto;;;
+  margin: 0 auto;
   padding: 0;
   max-width: 640px;
   font-size: 16px;

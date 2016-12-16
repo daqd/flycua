@@ -27,6 +27,7 @@
             <div class="tabs_wrap_item multiple" :class="{cur:isMultiple}" data-flightType="multiple" @click="flightTypeClcik">往返</div>
         </div>
         <!-- 出发到达信息 -->
+        1111111111111:<span>{{doneTodosCount}}</span>
         <div class="flight_choose_wrap">
             <div class="flight_airport_date_wrap">
                     <div class="flight_airport_date_wrap_item" >
@@ -110,14 +111,26 @@
 import Vue from 'vue';
 import { Swipe, SwipeItem , Button , Popup , Picker ,Toast } from 'mint-ui';
 import {getDay,getNextDay} from '../js/common';
+
+//获取组件级应用状态
+import {CheckOutTypeOfFlight} from 'getters';
+console.log(CheckOutTypeOfFlight);
+
 Vue.component(Button.name, Button);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Popup.name, Popup);
 Vue.component(Picker.name, Picker);
 
-// 引入底部组件
 export default {
+  vuex: {
+      getters: {
+          CheckOutTypeOfFlight
+      },
+      actions: {
+
+      }
+  },
   data() {
       return {
         isMultiple:false,
@@ -217,12 +230,15 @@ export default {
       })
     },
     computed: {
-
+      doneTodosCount () {
+        return this.$store.getters.CheckOutTypeOfFlight
+      }
     },
     ready() {
 
     },
     created(){
+      console.log(this.$store);
       //测试请求数据
       // this.$http.jsonp('http://m.flycua.com/h5/book/queryAirport.jsonp').then(function(response) {
       //     console.log(response);
@@ -235,6 +251,8 @@ export default {
       this.$data.flightDetails.orgDate = getDay(0);
       //初始化到达日期为明天的日期
       this.$data.flightDetails.dstDate = getDay(1);
+
+      console.log(this);
     },
     attached() {},
     methods: {
@@ -273,8 +291,6 @@ export default {
           this.$router.push({path:'/book/flightList',query:{flightDetails:this.$data.flightDetails,passengerNum:this.$data.passengerNum}});
         };
       },
-
-
     },
     components: {
     }
