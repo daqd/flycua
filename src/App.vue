@@ -1,6 +1,7 @@
 <template>
 <div id="app">
-  <!-- main view -->
+    <headers></headers>
+    <!-- main view -->
     <Container></Container>
     <foot></foot>
 </div>
@@ -8,18 +9,17 @@
 
 <script>
 import Vue from 'vue';
-import Header from 'mint-ui/lib/Header';
+import headers from './components/header.vue';
 import Container from './components/container.vue';
 import foot from './components/footer.vue';
 
-Vue.component('appHeader', Header);
-
 export default {
   components: {
-    Container,foot
+    headers,Container,foot
   },
   mounted(){
-  //  console.log(this.$route.name);
+
+
   }
 }
 </script>
@@ -54,9 +54,5 @@ ul li{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-.mint-header{
-  z-index: 9999 !important;
-  background-color: #f63939;
 }
 </style>

@@ -7,15 +7,6 @@
     </div>
   </mt-popup>
   <!-- 提示信息结束 -->
-  <!-- header -->
-  <mt-header fixed v-bind:title="pageName">
-    <router-link to="/" slot="left">
-      <mt-button icon="back">返回</mt-button>
-    </router-link>
-    <mt-button icon="home" slot="right"></mt-button>
-  </mt-header>
-  <!-- header结束 -->
-  <div style="margin-top:40px;"></div>
   <!-- 内容区获取 -->
   <!-- 特价日历 -->
   <article class="lowPriceWrap">
@@ -144,7 +135,7 @@
 <script>
 import Vue from 'vue';
 import shoppingRes from '../../mocks/book/flightList.json';
-console.log(shoppingRes);
+//console.log(shoppingRes);
 export default {
   data() {
     return {

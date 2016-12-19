@@ -23,23 +23,22 @@
       <div class="part-first-content">
         <!-- Tab选项卡 -->
         <div class="tabs_wrap">
-            <div class="tabs_wrap_item single" :class="{cur:!isMultiple}" data-flightType="single" @click="flightTypeClcik">单程</div>
-            <div class="tabs_wrap_item multiple" :class="{cur:isMultiple}" data-flightType="multiple" @click="flightTypeClcik">往返</div>
+            <div class="tabs_wrap_item single" :class="{cur:getFlightType=='single'}" @click="changeTypeToSingle">单程</div>
+            <div class="tabs_wrap_item multiple" :class="{cur:getFlightType=='multiple'}" @click="changeTypeToMultiple">往返</div>
         </div>
         <!-- 出发到达信息 -->
-        1111111111111:<span>{{doneTodosCount}}</span>
         <div class="flight_choose_wrap">
             <div class="flight_airport_date_wrap">
                     <div class="flight_airport_date_wrap_item" >
                         <div class="item_name"> 出发城市 </div>
-                        <router-link :to="{ path: '/airportList', query: { type: 'orgCity', fromPath:this.$route.path }}">
-                          <div class="item_val item_airport_val textCenter"> {{flightDetails.orgCityZh}}</div>
+                        <router-link :to="{ path: '/airportList', query: { type: 'orgCity'}}">
+                          <div class="item_val item_airport_val textCenter"> {{getFlightDetails.orgCityZh}}</div>
                         </router-link>
                     </div>
                 <div class="flight_airport_date_wrap_item">
                     <div class="item_name"> 出发日期 </div>
-                    <router-link :to="{ path: '/calendar', query: { type: 'orgDate', fromPath:this.$route.path }}">
-                      <div class="item_val item_date_val textCenter"> {{flightDetails.orgDate}} </div>
+                    <router-link :to="{ path: '/calendar', query: { type: 'orgDate'}}">
+                      <div class="item_val item_date_val textCenter"> {{getFlightDetails.orgDate}} </div>
                     </router-link>
                 </div>
             </div>
@@ -48,14 +47,14 @@
                 <div class="flight_airport_date_wrap_item">
                     <div class="item_name textRight"> 到达城市 </div>
                     <router-link :to="{ path: '/airportList', query: { type: 'dstCity', fromPath:this.$route.path }}">
-                    <div class="item_val item_airport_val textCenter"> {{flightDetails.dstCityZh}} </div>
+                    <div class="item_val item_airport_val textCenter"> {{getFlightDetails.dstCityZh}} </div>
                     </router-link>
                 </div>
                 <transition name="fade">
-                  <div class="flight_airport_date_wrap_item" v-show="isMultiple">
+                  <div class="flight_airport_date_wrap_item" v-show="getFlightType=='multiple'">
                       <div class="item_name textRight"> 到达日期 </div>
-                      <router-link :to="{ path: '/calendar', query: { type: 'dstDate', fromPath:this.$route.path }}">
-                        <div class="item_val item_date_val textCenter"> {{flightDetails.dstDate}} </div>
+                      <router-link :to="{ path: '/calendar', query: { type: 'dstDate'}}">
+                        <div class="item_val item_date_val textCenter"> {{getFlightDetails.dstDate}} </div>
                       </router-link>
                   </div>
               </transition>
@@ -69,15 +68,15 @@
       <div class="part-between-content">
           <div class="passenger_count_item">
               <div class="passenger_count_name">成人</div>
-              <div class="passenger_count_val adult_icon" @click="popup">{{passengerNum.adultNum}}</div>
+              <div class="passenger_count_val adult_icon" @click="popup">{{getPassengerNum.adultNum}}</div>
           </div>
           <div class="passenger_count_item">
               <div class="passenger_count_name">儿童</div>
-              <div class="passenger_count_val child_icon" @click="popup">{{passengerNum.childNum}}</div>
+              <div class="passenger_count_val child_icon" @click="popup">{{getPassengerNum.childNum}}</div>
           </div>
           <div class="passenger_count_item">
               <div class="passenger_count_name">婴儿</div>
-              <div class="passenger_count_val baby_icon" @click="popup">{{passengerNum.babyNum}}</div>
+              <div class="passenger_count_val baby_icon" @click="popup">{{getPassengerNum.babyNum}}</div>
           </div>
       </div>
     </div>
@@ -111,10 +110,7 @@
 import Vue from 'vue';
 import { Swipe, SwipeItem , Button , Popup , Picker ,Toast } from 'mint-ui';
 import {getDay,getNextDay} from '../js/common';
-
-//获取组件级应用状态
-import {CheckOutTypeOfFlight} from 'getters';
-console.log(CheckOutTypeOfFlight);
+import { mapGetters } from 'vuex'
 
 Vue.component(Button.name, Button);
 Vue.component(Swipe.name, Swipe);
@@ -123,26 +119,9 @@ Vue.component(Popup.name, Popup);
 Vue.component(Picker.name, Picker);
 
 export default {
-  vuex: {
-      getters: {
-          CheckOutTypeOfFlight
-      },
-      actions: {
-
-      }
-  },
   data() {
       return {
-        isMultiple:false,
         popupVisible:false,
-        flightDetails:{
-          orgCityZh:'北京南苑',
-          orgCityCode:'BJS',
-          dstCityZh:'广州佛山',
-          dstCityCode:'FUO',
-          orgDate:'',
-          dstDate:''
-        },
         passengerNumSelect: [
             {
               flex: 1,
@@ -168,11 +147,6 @@ export default {
               textAlign: 'center'
             }
           ],
-          passengerNum:{
-            adultNum:1,
-            childNum:0,
-            babyNum:0
-          },
           moduleEntry:[
             {
               moudleClassName:'mycua',
@@ -205,54 +179,19 @@ export default {
           ]
       };
     },
-    beforeRouteEnter (to, from, next) {
-      next(vm=>{
-        //初始化出发到达城市,日期
-        switch(to.query.type){
-          case "orgCity":
-            vm.$data.flightDetails.orgCityZh = to.query.airportZh;
-            vm.$data.flightDetails.orgCityCode = to.query.airportCode;
-          break;
-          case "dstCity":
-            vm.$data.flightDetails.dstCityZh = to.query.airportZh;
-            vm.$data.flightDetails.dstCityCode = to.query.airportCode;
-          break;
-          case "orgDate":
-            vm.$data.flightDetails.orgDate = to.query.calendarItem;
-            vm.$data.flightDetails.dstDate = getNextDay(to.query.calendarItem);
-          break;
-          case "dstDate":
-            vm.$data.flightDetails.dstDate = to.query.calendarItem;
-          break;
-        }
-        //初始化起始往返时间
-
-      })
-    },
-    computed: {
-      doneTodosCount () {
-        return this.$store.getters.CheckOutTypeOfFlight
-      }
-    },
+    computed: mapGetters({
+      getFlightType: 'getFlightType',
+      getFlightDetails:'getFlightDetails',
+      getPassengerNum:'getPassengerNum'
+    }),
     ready() {
 
     },
     created(){
-      console.log(this.$store);
-      //测试请求数据
-      // this.$http.jsonp('http://m.flycua.com/h5/book/queryAirport.jsonp').then(function(response) {
-      //     console.log(response);
-      // }, function (response) {
-      //     // error callback
-      //     console.log("fail");
-      // });
-
       //初始化出发日期为今天的日期
-      this.$data.flightDetails.orgDate = getDay(0);
+      this.$store.dispatch('setOrgDate',getDay(0));
       //初始化到达日期为明天的日期
-      this.$data.flightDetails.dstDate = getDay(1);
-
-      console.log(this);
+      this.$store.dispatch('setDstDate',getDay(1));
     },
     attached() {},
     methods: {
@@ -263,32 +202,29 @@ export default {
 
       //乘机人数量选择
       onValuesChange:function(){
-        this.$data.passengerNum.adultNum = arguments[1][0];
-        this.$data.passengerNum.childNum = arguments[1][1];
-        this.$data.passengerNum.babyNum = arguments[1][2];
+        this.$store.dispatch('setAdultNum',arguments[1][0]);
+        this.$store.dispatch('setChildNum',arguments[1][1]);
+        this.$store.dispatch('setBabyNum',arguments[1][2]);
       },
 
       //单程往返切换
-      flightTypeClcik:function(event){
-        if(event.srcElement.getAttribute("data-flightType")=='single'){
-          this.$data.isMultiple=false;
-        }else if(event.srcElement.getAttribute("data-flightType")=='multiple'){
-          this.$data.isMultiple=true;
-        }
+      changeTypeToSingle:function(){
+        this.$store.dispatch('changeFlightType','single');
       },
-
+      changeTypeToMultiple:function(){
+        this.$store.dispatch('changeFlightType','multiple');
+      },
       //切换往返程信息
       changeOrgDst:function(){
-        [this.$data.flightDetails.orgCityZh,this.$data.flightDetails.dstCityZh] = [this.$data.flightDetails.dstCityZh,this.$data.flightDetails.orgCityZh];
-        [this.$data.flightDetails.orgCityCode,this.$data.flightDetails.dstCityCode] = [this.$data.flightDetails.dstCityCode,this.$data.flightDetails.orgCityCode];
+        this.$store.dispatch('changeOrgDstMes');
       },
 
       //执行查询
       toDoSearch(){
-        if(this.$data.flightDetails.orgCityCode == this.$data.flightDetails.dstCityCode){
+        if(this.$store.state.book.flightDetails.orgCityCode == this.$store.state.book.flightDetails.dstCityCode){
           Toast('出发与到达城市不可相同！');
         }else{
-          this.$router.push({path:'/book/flightList',query:{flightDetails:this.$data.flightDetails,passengerNum:this.$data.passengerNum}});
+          this.$router.push({path:'/book/flightList'});
         };
       },
     },

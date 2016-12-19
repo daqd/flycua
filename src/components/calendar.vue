@@ -1,14 +1,5 @@
 <template lang="html">
   <div>
-    <!-- header -->
-    <mt-header fixed v-bind:title="pageName">
-      <router-link to="/" slot="left">
-        <mt-button icon="back">返回</mt-button>
-      </router-link>
-      <mt-button icon="home" slot="right"></mt-button>
-    </mt-header>
-    <!-- header结束 -->
-    <div style="margin-top:40px;"></div>
     <!-- 日历控件主体 -->
     <div class="weeks is-fixed">
       <ul class="is-fixed">
@@ -30,14 +21,10 @@
             <li v-for="childItem in item.detailStr" :data-dateStr="childItem.dateStr" :data-timeStamp="childItem.timeStamp" >
                 <span :class="[todayTimeStamp>childItem.timeStamp ? 'disabled' : 'canBeSelected', 'childItem']">
                     <p v-if="todayTimeStamp==childItem.timeStamp" class="today">
-                      <router-link :to="{ path: toPath,query: { type: setType,calendarItem:childItem.dateStr}}" tag='span'>
-                        <span class="dateItem">今</span>
-                      </router-link>
+                        <span class="dateItem" @click="setDay(childItem.dateStr)">今</span>
                     </p>
                     <p v-else class="dateItem">
-                      <router-link :to="{ path: toPath,query: { type: setType,calendarItem:childItem.dateStr}}" tag='span'>
-                        <span class="dateItem">{{childItem.val}}</span>
-                      </router-link>
+                      <span class="dateItem" @click="setDay(childItem.dateStr)">{{childItem.val}}</span>
                     </p>
                 </span>
             </li>
@@ -73,23 +60,12 @@ export default {
       todayTimeStamp:''
     };
   },
-  beforeRouteEnter (to,from,next){
-    next(vm=>{
-      //设置返回类型
-      vm.$data.setType = vm.$route.query.type;
-    });
-  },
   created:function(){
-    this.$data.pageName = this.$route.name;
-
     //获取今天的时间戳
     this.$data.todayTimeStamp = this.getTodayTimeStamp();
 
     // 初始化日历
     this.init();
-
-    //设置返回路径
-    this.$data.toPath = this.$route.query.fromPath;
   },
   computed: {},
   ready() {},
@@ -181,6 +157,16 @@ export default {
     getTodayTimeStamp(){
       var getTodayDate = new Date().getFullYear()+'/'+(new Date().getMonth()+1)+"/"+new Date().getDate();
       return Date.parse(new Date(getTodayDate))/1000;
+    },
+
+    //设置日期
+    setDay(day){
+      if(this.$route.query.type=='orgDate'){
+          this.$store.dispatch('setOrgDate',day);
+      }else if(this.$route.query.type=='dstDate'){
+          this.$store.dispatch('setDstDate',day);
+      }
+      this.$router.go(-1);
     }
   },
   components: {}

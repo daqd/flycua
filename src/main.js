@@ -17,6 +17,12 @@ const router = new VueRouter({
   scrollBehavior
 })
 
+//配置全局钩子，设置返回路径至全局状态管理backpath
+router.afterEach((to, from, next) => {
+  store.dispatch('setBackPath', from.path);
+  store.dispatch('setHeaderTit', to.name);
+})
+
 sync(store, router);
 
 const app = new Vue({

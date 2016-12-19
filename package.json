@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "less-loader": "^2.2.3",
     "mint-ui": "^2.0.4",
     "style-loader": "^0.13.1",
     "vue": "^2.0.1",

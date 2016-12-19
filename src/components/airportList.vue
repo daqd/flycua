@@ -1,14 +1,5 @@
 <template>
   <div>
-      <!-- header -->
-      <mt-header fixed v-bind:title="pageName">
-        <router-link to="/" slot="left">
-          <mt-button icon="back">返回</mt-button>
-        </router-link>
-        <mt-button icon="home" slot="right"></mt-button>
-      </mt-header>
-      <!-- header结束 -->
-    <div style="margin-top:40px;">
       <!-- 城市列表搜索组件 -->
       <mt-search
         cancel-text="取消"
@@ -21,11 +12,9 @@
         </div>
 
           <div class="airportItem" v-for="airportItem in charItem.charList" :data-cityCode="airportItem.cityCode">
-            <router-link :to="{ path: toPath,query: { type: setType,airportZh:airportItem.airportName,airportCode:airportItem.cityCode}}" tag='span'>
-              <div class="itemContent">
+            <div class="itemContent" @click="selectCity(airportItem.cityCode,airportItem.airportName)">
                 {{airportItem.airportName}}
-              </div>
-            </router-link>
+            </div>
           </div>
 
       </div>
@@ -38,7 +27,7 @@
 <script>
   import Vue from 'vue';
   import { Search } from 'mint-ui';
-
+  import { mapGetters } from 'vuex'
   //模拟数据
   import airportData from '../mocks/airport.json';
   //console.log(airportData);
@@ -52,12 +41,6 @@
         toPath:'',
         setType:''
       }
-    },
-    beforeRouteEnter (to,from,next){
-      next(vm=>{
-        //设置返回类型
-        vm.$data.setType = vm.$route.query.type;
-      });
     },
     created:function(){
       this.$data.pageName = this.$route.name;
@@ -87,7 +70,24 @@
         }
         return resAirportData;
       },
-    }
+      selectCity(cityCode,airportName){
+        if(this.$route.query.type=='orgCity'){
+            this.$store.dispatch('setOrgCity',{
+              orgCityZhVal:airportName,
+              orgCityCodeVal:cityCode
+            });
+        }else if(this.$route.query.type=='dstCity'){
+            this.$store.dispatch('setDstCity',{
+              dstCityZhVal:airportName,
+              dstCityCodeVal:cityCode
+            });
+        }
+        this.$router.go(-1);
+      }
+    },
+    computed: mapGetters({
+      getFlightType: 'getFlightType',
+    }),
 	}
 </script>
 <style>
