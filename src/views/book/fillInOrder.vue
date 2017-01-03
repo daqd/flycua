@@ -70,7 +70,7 @@
     </mt-cell>
     <!-- 预订按钮 -->
     <div class="nextBtnWrap">
-      <mt-button type="danger" size="large">下一步</mt-button>
+      <mt-button type="danger" size="large" @click="toAddServicePage">下一步</mt-button>
     </div>
 
   </div>
@@ -98,6 +98,9 @@ export default {
   methods: {
     showPsg(){
       Toast('显示乘机人待开发');
+    },
+    toAddServicePage(){
+      this.$router.push({path:'/book/bookAddService'});
     }
   },
   components: {}
