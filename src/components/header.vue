@@ -21,7 +21,6 @@
 			getHeaderTit:'getHeaderTit'
     }),
 		methods: {
-
 			//返回路径
 			goBack(){
 				this.$router.go(-1);
