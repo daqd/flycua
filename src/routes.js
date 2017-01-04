@@ -16,6 +16,12 @@ import flightList from './views/book/flightList'
 import fillInOrder from './views/book/fillInOrder'
 // 增值服务页
 import addService from './views/book/addService'
+//增值服务行李购买
+import luggage from './views/book/luggage'
+//增值服务餐食购买
+import food from './views/book/food'
+//订单确认
+import orderConfirm from './views/book/orderConfirm'
 
   export default [
   {
@@ -41,5 +47,14 @@ import addService from './views/book/addService'
   },
   {
     path:'/book/bookAddService',component:addService,name:"增值服务"
-  }
+  },
+  {
+    path:'/book/bookAddServiceLuggage',component:luggage,name:"我要托运"
+  },
+  {
+    path:'/book/bookAddServiceFood',component:food,name:"我要选餐"
+  },
+  {
+    path:'/book/bookOrderConfirm',component:orderConfirm,name:"订单确认"
+  },
 ];

@@ -177,8 +177,6 @@ export default {
 
   },
   created:function(){
-    this.$data.pageName = this.$route.name;
-
     this.$data.shoppingRes = shoppingRes;
 
     //设置默认展开收缩状态值

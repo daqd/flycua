@@ -176,6 +176,6 @@ export default {
   }
   .nextBtnWrap{
     width: 90%;;
-    margin: 15px auto;
+    margin: 25px auto;
   }
 </style>

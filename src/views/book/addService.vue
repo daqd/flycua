@@ -1,18 +1,32 @@
 <template lang="html">
 <div class="">
   <!-- 行李 -->
-  <addService-item-component>
-    <span slot="addServiceIMG" class="luggageIcon"></span>
-    <span slot="addServiceName">我要托运</span>
-    <span slot="addServiceInfo">线上购买托运行李，享超值折扣。</span>
-  </addService-item-component>
+  <div @click="toLuggagePage">
+    <addService-item-component>
+      <span slot="addServiceIMG" class="luggageIcon"></span>
+      <span slot="addServiceName">我要托运</span>
+      <span slot="addServiceInfo">线上购买托运行李，享超值折扣。</span>
+    </addService-item-component>
+  </div>
 
   <!-- 餐食 -->
-  <addService-item-component>
-    <span slot="addServiceIMG" class="foodIcon"></span>
-    <span slot="addServiceName">我要选餐</span>
-    <span slot="addServiceInfo">部分航班未开放预订。</span>
-  </addService-item-component>
+  <div @click="toFoodPage">
+    <addService-item-component>
+      <span slot="addServiceIMG" class="foodIcon"></span>
+      <span slot="addServiceName">我要选餐</span>
+      <span slot="addServiceInfo">部分航班未开放预订。</span>
+    </addService-item-component>
+  </div>
+
+  <!-- 增值服务购买须知 -->
+  <mt-cell title="我已阅读《增值服务购买须知》">
+    <mt-switch v-model="value"></mt-switch>
+  </mt-cell>
+
+  <!-- 预订按钮 -->
+  <div class="nextBtnWrap" @click="toOrderConfirmPage">
+    <mt-button type="danger" size="large">下一步</mt-button>
+  </div>
 
 </div>
 </template>
@@ -30,6 +44,20 @@ export default {
   components: {
   // 增值服务Item
   'addService-item-component': addServiceItem
+},
+  methods:{
+    //跳转至行李托运页
+    toLuggagePage(){
+      this.$router.push({path:'/book/bookAddServiceLuggage'});
+    },
+    //跳转至餐食购买页
+    toFoodPage(){
+      this.$router.push({path:'/book/bookAddServiceFood'});
+    },
+    //跳转至订单确认页
+    toOrderConfirmPage(){
+      this.$router.push({path:'/book/bookOrderConfirm'});
+    }
   }
 }
 </script>
@@ -41,8 +69,8 @@ export default {
   height: 100px;
   background: #fefefe;
   margin-bottom: 10px;
-  border-top: 1px solid #c9c9c9;
-  border-bottom: 1px solid #c9c9c9;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,11 +114,11 @@ export default {
   width: 100%;
   height: 100%;
   background: url("../../assets/book/luggageIcon.png") no-repeat center center;
-  background-size: 70px;
+  background-size: 60px;
 }
 .foodIcon{
   &:extend(.luggageIcon);
   background: url("../../assets/book/eatIcon.png") no-repeat center center;
-  background-size: 70px;
+  background-size: 60px;
 }
 </style>
