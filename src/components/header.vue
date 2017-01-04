@@ -4,7 +4,7 @@
 			<div @click="goBack" slot="left">
 				<mt-button icon="back">返回</mt-button>
 			</div>
-			<mt-button icon="more" slot="right" @click="goBack"></mt-button>
+			<div slot="right" class="goHomeIcon" @click="goHome"></div>
 		</mt-header>
 		<div style="margin-top:40px;" v-if="getHeaderTit!='首页'">
 	</div>
@@ -25,13 +25,24 @@
 			//返回路径
 			goBack(){
 				this.$router.go(-1);
+			},
+			//回到首页
+			goHome(){
+				this.$router.push({path:'/index'});
 			}
 		}
 	}
 </script>
-<style lang="css">
+<style lang="less">
 .mint-header{
   z-index: 9999 !important;
   background-color: #f63939 !important;
+}
+.goHomeIcon{
+	width: 40px;
+	height: 40px;
+	float: right;
+	background: url("../assets/common/headerHomeIcon.png") no-repeat right center;
+	background-size: 20px;
 }
 </style>

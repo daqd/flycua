@@ -3,6 +3,7 @@
   <!-- banner区域 -->
   <div class="banner">
     <mt-swipe :auto="4000" :showIndicators="false" prevent>
+      <mt-swipe-item><img src="http://www.flycua.com/upload/2016/12/16122201.jpg" alt="" /></mt-swipe-item>
       <mt-swipe-item><img src="http://www.flycua.com/upload/2016/7/870735824673800394.jpg" alt="" /></mt-swipe-item>
       <mt-swipe-item><img src="http://www.flycua.com/upload/2016/7/145502768571699261.jpg" alt="" /></mt-swipe-item>
       <mt-swipe-item><img src="http://www.flycua.com/upload/2016/10/16-10-31.jpg" alt="" /></mt-swipe-item>
@@ -157,8 +158,8 @@ export default {
               moudleNameZH:'机票预订'
             },
             {
-              moudleClassName:'lovetravel',
-              moudleNameZH:'爱旅游'
+              moudleClassName:'hotel',
+              moudleNameZH:'酒店'
             },
             {
               moudleClassName:'addService',
@@ -173,9 +174,17 @@ export default {
               moudleNameZH:'航班动态'
             },
             {
+              moudleClassName:'insurance',
+              moudleNameZH:'保险专区'
+            },
+            {
               moudleClassName:'contactUS',
               moudleNameZH:'联系我们'
-            }
+            },
+            {
+              moudleClassName:'lovetravel',
+              moudleNameZH:'爱旅游'
+            },
           ]
       };
     },
@@ -235,7 +244,7 @@ export default {
 
 <style lang="css">
 .homePageContent{
-  height:810px;
+  height:830px;
   overflow: hidden;
 }
 /*通用样式*/
@@ -446,6 +455,10 @@ export default {
     background: url("../assets/home/main_order.png") no-repeat center center;
     background-size:60px;
 }
+.hotel{
+  background: url("../assets/home/hotel.png") no-repeat center center;
+  background-size:60px;
+}
 .addService{
     background: url("../assets/home/main_increment.png") no-repeat center center;
     background-size:60px;
@@ -453,6 +466,10 @@ export default {
 .dynamic{
     background: url("../assets/home/main_flight_dynamic.png") no-repeat center center;
     background-size:60px;
+}
+.insurance{
+  background: url("../assets/home/insuranceIcon.png") no-repeat center center;
+  background-size:60px;
 }
 .lovetravel{
     background: url("../assets/home/main_travel.png") no-repeat center center;

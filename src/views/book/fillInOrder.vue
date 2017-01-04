@@ -69,8 +69,8 @@
       <mt-switch v-model="value"></mt-switch>
     </mt-cell>
     <!-- 预订按钮 -->
-    <div class="nextBtnWrap">
-      <mt-button type="danger" size="large" @click="toAddServicePage">下一步</mt-button>
+    <div class="nextBtnWrap" @click="toAddServicePage">
+      <mt-button type="danger" size="large">下一步</mt-button>
     </div>
 
   </div>
