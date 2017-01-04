@@ -93,7 +93,7 @@
 
   <!-- 首页模块入口 -->
   <div class="module_wrap">
-    <div class="module_entry_item" v-for="item in moduleEntry">
+    <div class="module_entry_item" v-for="item in moduleEntry" @click="moduleEnter(item.path)">
       <div class="module_entey_iterm_img" :class="item.moudleClassName"></div>
       <div class="module_entey_iterm_name">{{item.moudleNameZH}}</div>
     </div>
@@ -151,39 +151,48 @@ export default {
           moduleEntry:[
             {
               moudleClassName:'mycua',
-              moudleNameZH:'我的联行'
+              moudleNameZH:'我的联行',
+              path:''
             },
             {
               moudleClassName:'book',
-              moudleNameZH:'机票预订'
+              moudleNameZH:'机票预订',
+              path:'/book/flightQuery'
             },
             {
               moudleClassName:'hotel',
-              moudleNameZH:'酒店'
+              moudleNameZH:'酒店',
+              path:''
             },
             {
               moudleClassName:'addService',
-              moudleNameZH:'增值服务'
+              moudleNameZH:'增值服务',
+              path:''
             },
             {
               moudleClassName:'passlcon',
-              moudleNameZH:'优选年票'
+              moudleNameZH:'优选年票',
+              path:''
             },
             {
               moudleClassName:'dynamic',
-              moudleNameZH:'航班动态'
+              moudleNameZH:'航班动态',
+              path:''
             },
             {
               moudleClassName:'insurance',
-              moudleNameZH:'保险专区'
+              moudleNameZH:'保险专区',
+              path:''
             },
             {
               moudleClassName:'contactUS',
-              moudleNameZH:'联系我们'
+              moudleNameZH:'联系我们',
+              path:''
             },
             {
               moudleClassName:'lovetravel',
-              moudleNameZH:'爱旅游'
+              moudleNameZH:'爱旅游',
+              path:''
             },
           ]
       };
@@ -205,26 +214,26 @@ export default {
     attached() {},
     methods: {
       //乘机人数量选择组件状态管理
-      popup:function(){
+      popup(){
         this.$data.popupVisible=!this.$data.popupVisible;
       },
 
       //乘机人数量选择
-      onValuesChange:function(){
+      onValuesChange(){
         this.$store.dispatch('setAdultNum',arguments[1][0]);
         this.$store.dispatch('setChildNum',arguments[1][1]);
         this.$store.dispatch('setBabyNum',arguments[1][2]);
       },
 
       //单程往返切换
-      changeTypeToSingle:function(){
+      changeTypeToSingle(){
         this.$store.dispatch('changeFlightType','single');
       },
-      changeTypeToMultiple:function(){
+      changeTypeToMultiple(){
         this.$store.dispatch('changeFlightType','multiple');
       },
       //切换往返程信息
-      changeOrgDst:function(){
+      changeOrgDst(){
         this.$store.dispatch('changeOrgDstMes');
       },
 
@@ -235,6 +244,11 @@ export default {
         }else{
           this.$router.push({path:'/book/flightList'});
         };
+      },
+
+      //模块-个人中心入口
+      moduleEnter(path){
+        this.$router.push({path:path});
       },
     },
     components: {

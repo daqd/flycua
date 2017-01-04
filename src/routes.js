@@ -37,7 +37,7 @@ import orderConfirm from './views/book/orderConfirm'
     path:'/calendar',component:calendar,name:'日期选择'
   },
   {
-    path: '/book', component: flightQuery
+    path: '/book/flightQuery', component: flightQuery,name:'航班查询'
   },
   {
     path: '/book/flightList', component: flightList,name:"航班列表"

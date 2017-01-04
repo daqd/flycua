@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<mt-header fixed :title="getHeaderTit" v-if="getHeaderTit!='首页'">
+		<mt-header fixed :title="getHeaderTit" v-if="getHeaderTit!='首页' && getHeaderTit!='航班查询'">
 			<div @click="goBack" slot="left">
 				<mt-button icon="back">返回</mt-button>
 			</div>
 			<div slot="right" class="goHomeIcon" @click="goHome"></div>
 		</mt-header>
-		<div style="margin-top:40px;" v-if="getHeaderTit!='首页'">
+		<div style="margin-top:40px;" v-if="getHeaderTit!='首页' && getHeaderTit!='航班查询'">
 	</div>
 </template>
 <script>
