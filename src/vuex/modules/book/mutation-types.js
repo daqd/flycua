@@ -1,7 +1,3 @@
-//base
-export const BACK_PATH = 'BACK_PATH' //设置返回路径
-export const HEADER_TIT = 'HEADER_TIT' //设顶部title
-
 //book
 export const CHANGE_FLIGHT_TYPE = 'CHANGE_FLIGHT_TYPE' //切换航班类型
 export const CHANGE_ORGDST_MES = 'CHANGE_ORGDST_MES' //切换往返航班信息

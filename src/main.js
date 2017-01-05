@@ -17,8 +17,18 @@ const router = new VueRouter({
   scrollBehavior
 })
 
+//配置全局钩子用来拦截非登录状态下的路由跳转
+router.beforeEach((to, from, next) => {
+  // let noNeedLoginPage = ['首页','航班列表','航班查询'];
+  // if(noNeedLoginPage.indexOf(to.name)==-1 && !store.state.base.loginStatus){
+  //   next({path:'/'});
+  // }else{
+  //   next();
+  // }
+})
+
 //配置全局钩子，设置返回路径至全局状态管理backpath
-router.afterEach((to, from, next) => {
+router.afterEach((to, from) => {
   store.dispatch('setBackPath', from.path);
   store.dispatch('setHeaderTit', to.name);
 })

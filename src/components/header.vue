@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<mt-header fixed :title="getHeaderTit" v-if="getHeaderTit!='首页' && getHeaderTit!='航班查询'">
+		<mt-header fixed :title="getHeaderTit" v-if="getHeaderTit!='首页'">
 			<div @click="goBack" slot="left">
 				<mt-button icon="back">返回</mt-button>
 			</div>

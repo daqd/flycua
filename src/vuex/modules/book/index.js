@@ -6,8 +6,6 @@ import * as getters from './getters'
 import mutations from './mutation'
 
 const state = {
-  backPath:'',
-  headerTit:'',
   flightType: 'single',
   flightDetails:{
     orgCityZh:'北京南苑',

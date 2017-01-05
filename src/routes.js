@@ -6,6 +6,9 @@ import calendar from './components/calendar'
 // ---------------------------------- H5首页 -----------------------------------------------------//
 import home from './views/home'
 
+//-----------------------------------用户登录 ----------------------------------------------------//
+import loginPage from './views/usercenter/login'
+
 // ---------------------------------- 机票预订模块 --------------------------------------------------//
 
 // 机票查询页
@@ -24,37 +27,52 @@ import food from './views/book/food'
 import orderConfirm from './views/book/orderConfirm'
 
   export default [
+  //重定向
   {
     path: '/', redirect: '/index'
   },
+  // 首页
   {
     path: '/index', component: home,name:"首页"
   },
+  // 城市列表组件
   {
     path: '/airportList', component: airportList,name:"城市选择"
   },
+  // 日历组件
   {
     path:'/calendar',component:calendar,name:'日期选择'
   },
+  // 航班查询
   {
     path: '/book/flightQuery', component: flightQuery,name:'航班查询'
   },
+  // 航班查询列表
   {
     path: '/book/flightList', component: flightList,name:"航班列表"
   },
+  // 订单填写
   {
     path: '/book/bookFillInOrder', component: fillInOrder,name:"订单填写"
   },
+  // 增值服务页
   {
     path:'/book/bookAddService',component:addService,name:"增值服务"
   },
+  // 行李托运
   {
     path:'/book/bookAddServiceLuggage',component:luggage,name:"我要托运"
   },
+  // 选餐
   {
     path:'/book/bookAddServiceFood',component:food,name:"我要选餐"
   },
+  // 订单确认
   {
     path:'/book/bookOrderConfirm',component:orderConfirm,name:"订单确认"
+  },
+  // 用户登录
+  {
+    path:'/usercenter/login',component:loginPage,name:"用户登录"
   },
 ];
