@@ -48,14 +48,17 @@ export default {
   methods:{
     //跳转至行李托运页
     toLuggagePage(){
+      this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
       this.$router.push({path:'/book/bookAddServiceLuggage'});
     },
     //跳转至餐食购买页
     toFoodPage(){
+      this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
       this.$router.push({path:'/book/bookAddServiceFood'});
     },
     //跳转至订单确认页
     toOrderConfirmPage(){
+      this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
       this.$router.push({path:'/book/bookOrderConfirm'});
     }
   }

@@ -242,12 +242,14 @@ export default {
         if(this.$store.state.book.flightDetails.orgCityCode == this.$store.state.book.flightDetails.dstCityCode){
           Toast('出发与到达城市不可相同！');
         }else{
+          this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
           this.$router.push({path:'/book/flightList'});
         };
       },
 
       //模块-个人中心入口
       moduleEnter(path){
+        this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
         this.$router.push({path:path});
       },
     },

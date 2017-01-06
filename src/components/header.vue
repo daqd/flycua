@@ -23,6 +23,7 @@
 		methods: {
 			//返回路径
 			goBack(){
+				this.$store.dispatch('setPageChangeStatus','back'); //保存页面切换状态至全局
 				this.$router.go(-1);
 			},
 			//回到首页

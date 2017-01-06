@@ -100,6 +100,7 @@ export default {
       Toast('显示乘机人待开发');
     },
     toAddServicePage(){
+      this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
       this.$router.push({path:'/book/bookAddService'});
     }
   },

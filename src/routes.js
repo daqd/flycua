@@ -7,7 +7,7 @@ import calendar from './components/calendar'
 import home from './views/home'
 
 //-----------------------------------用户登录 ----------------------------------------------------//
-import loginPage from './views/usercenter/login'
+import loginPage from './views/login/login'
 
 // ---------------------------------- 机票预订模块 --------------------------------------------------//
 
@@ -73,6 +73,6 @@ import orderConfirm from './views/book/orderConfirm'
   },
   // 用户登录
   {
-    path:'/usercenter/login',component:loginPage,name:"用户登录"
+    path:'/login',component:loginPage,name:"用户登录"
   },
 ];

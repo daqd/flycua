@@ -19,12 +19,15 @@ const router = new VueRouter({
 
 //配置全局钩子用来拦截非登录状态下的路由跳转
 router.beforeEach((to, from, next) => {
-  // let noNeedLoginPage = ['首页','航班列表','航班查询'];
-  // if(noNeedLoginPage.indexOf(to.name)==-1 && !store.state.base.loginStatus){
-  //   next({path:'/'});
-  // }else{
-  //   next();
-  // }
+  const pathArr = to.path.split('/');
+  const toPath = pathArr[pathArr.length-1];
+  let noNeedLoginPage = ['index','airportList','calendar','flightQuery','flightList','login'];
+  if(noNeedLoginPage.indexOf(toPath)==-1 && !store.state.base.loginStatus){
+    store.dispatch('setNextPath', to.path);
+    next({path:'/login'});
+  }else{
+    next();
+  }
 })
 
 //配置全局钩子，设置返回路径至全局状态管理backpath

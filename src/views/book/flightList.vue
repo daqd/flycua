@@ -122,9 +122,7 @@
           <!-- 预订按钮 -->
           <div class="SeatItemBtn">
             <div class="border-right"></div>
-            <router-link :to="{ path: '/book/bookFillInOrder'}">
-              <span>预订</span>
-            </router-link>
+              <span @click="toFillInOrderPage">预订</span>
           </div>
         </div>
       </div>
@@ -165,14 +163,6 @@ export default {
       ]
     };
   },
-  beforeRouteEnter (to, from, next) {
-    next(vm=>{
-      //获取上页的数据
-      //vm.$data.popupVisible=true;
-      //vm.$data.parameter = to.query;
-      //var Tip = setTimeout(function(){vm.$data.popupVisible=false},3000);
-    })
-  },
   computed: {
 
   },
@@ -199,6 +189,10 @@ export default {
       for (var i = 0; i < this.$data.shoppingRes.goShoppingRes.length; i++) {
         this.$set(this.$data.shoppingRes.goShoppingRes[i],'OpenClose',false);
       }
+    },
+    toFillInOrderPage(){
+      this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
+      this.$router.push({ path: '/book/bookFillInOrder'});
     }
   },
   components: {}
