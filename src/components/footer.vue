@@ -4,10 +4,10 @@
 
     </div>
     <mt-tabbar fixed>
-      <mt-tab-item id="首页">
-        <img slot="icon" src="../assets/common/tab_home_normal.png">
-        首页
-      </mt-tab-item>
+        <mt-tab-item id="首页">
+          <img slot="icon" src="../assets/common/tab_home_normal.png">
+          首页
+        </mt-tab-item>
       <mt-tab-item id="新闻">
         <img slot="icon" src="../assets/common/tab_news_normal.png">
         新闻
@@ -38,7 +38,11 @@ export default {
   computed: {},
   ready() {},
   attached() {},
-  methods: {},
+  methods: {
+    goToHomePage(){
+      console.log("ccc");
+    }
+  },
   components: {}
 };
 </script>

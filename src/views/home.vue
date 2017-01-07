@@ -152,7 +152,7 @@ export default {
             {
               moudleClassName:'mycua',
               moudleNameZH:'我的联行',
-              path:''
+              path:'/user/index'
             },
             {
               moudleClassName:'book',

@@ -26,6 +26,13 @@ import food from './views/book/food'
 //订单确认
 import orderConfirm from './views/book/orderConfirm'
 
+// ---------------------------------- 会员中心模块 --------------------------------------------------//
+
+//会员中心首页
+import userCenterIndex from './views/usercenter/usercenter'
+
+
+
   export default [
   //重定向
   {
@@ -43,6 +50,9 @@ import orderConfirm from './views/book/orderConfirm'
   {
     path:'/calendar',component:calendar,name:'日期选择'
   },
+
+  //-------------------------------------------------预订流程-------------------------------------------------//
+
   // 航班查询
   {
     path: '/book/flightQuery', component: flightQuery,name:'航班查询'
@@ -71,6 +81,13 @@ import orderConfirm from './views/book/orderConfirm'
   {
     path:'/book/bookOrderConfirm',component:orderConfirm,name:"订单确认"
   },
+
+  //------------------------------------------我的联航会员中心-------------------------------------------------//
+  // 会员中心首页
+  {
+    path:'/user/index',component:userCenterIndex,name:"会员中心"
+  },
+
   // 用户登录
   {
     path:'/login',component:loginPage,name:"用户登录"
