@@ -12,6 +12,7 @@ Vue.use(Mint);
 Vue.use(VueRouter);
 Vue.use(resource);
 
+console.log(Mint);
 const router = new VueRouter({
   routes,
   scrollBehavior

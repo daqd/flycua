@@ -3,10 +3,12 @@
     <div class="fillDiv">
 
     </div>
-    <mt-tabbar fixed>
+    <mt-tabbar fixed  :selected.sync="selected">
         <mt-tab-item id="首页">
-          <img slot="icon" src="../assets/common/tab_home_normal.png">
-          首页
+          <!-- <div @click="goToHomePage"> -->
+            <img slot="icon" src="../assets/common/tab_home_normal.png">
+            首页
+          <!-- </div> -->
         </mt-tab-item>
       <mt-tab-item id="新闻">
         <img slot="icon" src="../assets/common/tab_news_normal.png">
@@ -33,6 +35,7 @@ Vue.component(TabItem.name, TabItem);
 export default {
   data() {
     return {
+      selected:'我的',
     };
   },
   computed: {},
