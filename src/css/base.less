@@ -29,3 +29,34 @@ ul li{
   justify-content: center;
   align-items: center;
 }
+
+/** 1px像素边框 **/
+.onPxLineWrap{
+  position: relative;
+}
+.onePxLine:after{
+    position:absolute;
+    content: "";
+    height:1px;
+    background:#d5d5d5;
+    width:100%;
+    bottom:0;
+    -webkit-transform:scaleY(.5);
+    -ms-transform:scaleY(.5);
+    -o-transform:scaleY(.5);
+    transform:scaleY(.5);
+}
+//-webkit-transform:scaleY(.5);是为了使高度为1px缩小为0.5；
+//注意伪元素使用时，记得定义父级为position:relative;
+.onePxLine:before{
+    position:absolute;
+    content: "";
+    height:1px;
+    background:#d5d5d5;
+    width:100%;
+    top:0;
+    -webkit-transform:scaleY(.5);
+    -ms-transform:scaleY(.5);
+    -o-transform:scaleY(.5);
+    transform:scaleY(.5);
+}

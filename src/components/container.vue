@@ -23,7 +23,7 @@
     }
   }
 </script>
-<style lang="css">
+<style lang="css" scoped>
 
 /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */

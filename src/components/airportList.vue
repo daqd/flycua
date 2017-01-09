@@ -90,7 +90,7 @@
     }),
 	}
 </script>
-<style>
+<style scoped>
 .mint-search{
     height:auto !important;
 }

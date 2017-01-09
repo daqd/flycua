@@ -104,7 +104,23 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+.tabs_wrap{
+  width: 100%;
+  height: 45px;
+}
+.tabs_wrap_item{
+  width: 50%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  float: left;
+  background:#e7e7e7;
+}
+.cur{
+  background:#f63939;
+  color:#FFF;
+}
 .loginTip{
   width: 100%;
   height: 30px;

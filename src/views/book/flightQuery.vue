@@ -172,11 +172,27 @@ methods:{
 }
 </script>
 
-<style lang="less">
-// .headerTransparent{
-//   background-color: transparent !important;
-//   color: #505050;
-// }
+<style lang="less" scoped>
+.headerTransparent{
+  background-color: transparent !important;
+  color: #505050;
+}
+.tabs_wrap{
+  width: 100%;
+  height: 45px;
+}
+.tabs_wrap_item{
+  width: 50%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  float: left;
+  background:#e7e7e7;
+}
+.cur{
+  background:#f63939;
+  color:#FFF;
+}
 .fq-banner{
   width: 100%;
   height: 200px;
@@ -251,9 +267,62 @@ methods:{
     background-size: 30px;
   }
 }
+/*乘机人数量选择*/
+.part-between-content{
+  width: 95%;
+  height: 50px;
+  margin: 0 auto;
+}
+.passenger_count_item{
+  width: 33%;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+}
+.passenger_count_name{
+  width: 35%;
+  height: 45px;
+  float:left;
+  text-align: center;
+}
+.passenger_count_val{
+  width: 55%;
+  height: 30px;
+  float: left;
+  border-radius: 5px;
+  margin-top: 10px;
+  line-height: 30px;
+  padding-left: 10%;
+}
+.adult_icon{
+ background:#c9c9c9 url("../../assets/home/adult.png") no-repeat 85% center;
+ background-size:20px;
+}
+.child_icon{
+ background:#c9c9c9 url("../../assets/home/child.png") no-repeat 85% center;
+ background-size:20px;
+}
+.baby_icon{
+ background:#c9c9c9 url("../../assets/home/baby.png") no-repeat 85% center;
+ background-size:20px;
+}
 .addTopBorder{
     border-top: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
     margin-top: 20px;
+}
+/*乘机人数量选择提示信息*/
+.passenger-num-wraper{
+  width: 100%;
+  height:45px;
+}
+.mint-popup {
+  width: 100%;
+}
+.part-end{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 </style>

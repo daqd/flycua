@@ -108,7 +108,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less"scoped>
 @import "../../css/common.less";
   /** 可供继承的样式 **/
   .flightDetailsItemBase{

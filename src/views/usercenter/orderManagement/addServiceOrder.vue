@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="">
-    登录页
+  <div>
+    增值服务订单
   </div>
 </template>
 
@@ -9,5 +9,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 </style>

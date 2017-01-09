@@ -199,7 +199,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .lowPriceItem{
   width:25%;
   height:80px;

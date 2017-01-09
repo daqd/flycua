@@ -32,7 +32,7 @@
 			}
 		}
 	}
-</script>
+</script scoped>
 <style lang="less">
 .mint-header{
   z-index: 9999 !important;

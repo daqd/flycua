@@ -32,9 +32,7 @@
             <div class="flight_airport_date_wrap">
                     <div class="flight_airport_date_wrap_item" >
                         <div class="item_name"> 出发城市 </div>
-                        <router-link :to="{ path: '/airportList', query: { type: 'orgCity'}}">
-                          <div class="item_val item_airport_val textCenter"> {{getFlightDetails.orgCityZh}}</div>
-                        </router-link>
+                          <div class="item_val item_airport_val textCenter" @click="toAirportListByOrg"> {{getFlightDetails.orgCityZh}}</div>
                     </div>
                 <div class="flight_airport_date_wrap_item">
                     <div class="item_name"> 出发日期 </div>
@@ -152,7 +150,7 @@ export default {
             {
               moudleClassName:'mycua',
               moudleNameZH:'我的联行',
-              path:'/user/index'
+              path:'/user/usercenter'
             },
             {
               moudleClassName:'book',
@@ -237,6 +235,11 @@ export default {
         this.$store.dispatch('changeOrgDstMes');
       },
 
+      //执行选择机场列表
+      toAirportListByOrg(){
+        this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
+        this.$router.push({path: '/airportList', query: { type: 'orgCity'}});
+      },
       //执行查询
       toDoSearch(){
         if(this.$store.state.book.flightDetails.orgCityCode == this.$store.state.book.flightDetails.dstCityCode){
@@ -258,7 +261,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .homePageContent{
   height:830px;
   overflow: hidden;

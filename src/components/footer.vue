@@ -26,7 +26,7 @@
 </div>
 </template>
 
-<script>
+<script scoped>
 import Vue from 'vue';
 import { Tabbar, TabItem } from 'mint-ui';
 

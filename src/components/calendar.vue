@@ -173,7 +173,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .weeks,.weeks ul{
   width: 100%;
   height:50px;

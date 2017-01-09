@@ -20,6 +20,7 @@ const router = new VueRouter({
 
 //配置全局钩子用来拦截非登录状态下的路由跳转
 router.beforeEach((to, from, next) => {
+  //判断拦截，是否需要登录
   const pathArr = to.path.split('/');
   const toPath = pathArr[pathArr.length-1];
   let noNeedLoginPage = ['index','airportList','calendar','flightQuery','flightList','login'];
@@ -29,6 +30,8 @@ router.beforeEach((to, from, next) => {
   }else{
     next();
   }
+  //判断当前登录状态是前进还是后退
+  
 })
 
 //配置全局钩子，设置返回路径至全局状态管理backpath

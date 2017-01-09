@@ -77,40 +77,47 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .addServiceIcon{
-    flex:1;
-    height: 100px;
-  }
-  .addServiceInfo{
-    height: 75px;
-    flex:2;
-    .addServiceInfoItem{
-      display: flex;
-      width: 100%;
-      height: 50%;
-      align-items: center;
-    }
-    .addServiceName{
-      font-size: 18px;
-    }
-    .addServiceInfo{
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  .buyBtn{
-    display: flex;
-    flex:1;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 40px;
-    margin-right: 10px;
-    margin-left: 5px;
-    background: @mainColor;
-    color: #FFF;
-    border-radius: 8px;
-  }
+}
+.addServiceIcon{
+  flex:1;
+  height: 100px;
+}
+.addServiceInfo{
+  height: 75px;
+  flex:2;
+}
+.addServiceInfoItem{
+  display: flex;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+}
+.addServiceName{
+  font-size: 18px;
+}
+.addServiceInfo{
+  font-size: 14px;
+  line-height: 20px;
+}
+.nextBtnWrap{
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.buyBtn{
+  display: flex;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  margin-right: 10px;
+  margin-left: 5px;
+  background: @mainColor;
+  color: #FFF;
+  border-radius: 8px;
 }
 .luggageIcon{
   display: block;
