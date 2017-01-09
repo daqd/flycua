@@ -160,37 +160,37 @@ export default {
             {
               moudleClassName:'hotel',
               moudleNameZH:'酒店',
-              path:''
+              path:'/tujia'
             },
             {
               moudleClassName:'addService',
               moudleNameZH:'增值服务',
-              path:''
+              path:'/addService'
             },
             {
               moudleClassName:'passlcon',
               moudleNameZH:'优选年票',
-              path:''
+              path:'/annualTicket'
             },
             {
               moudleClassName:'dynamic',
               moudleNameZH:'航班动态',
-              path:''
+              path:'/dynamic'
             },
             {
               moudleClassName:'insurance',
               moudleNameZH:'保险专区',
-              path:''
+              path:'/insurance'
             },
             {
               moudleClassName:'contactUS',
               moudleNameZH:'联系我们',
-              path:''
+              path:'/about'
             },
             {
               moudleClassName:'lovetravel',
               moudleNameZH:'爱旅游',
-              path:''
+              path:'/iTour'
             },
           ]
       };

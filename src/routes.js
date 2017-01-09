@@ -29,7 +29,7 @@ import orderConfirm from './views/book/orderConfirm'
 // ---------------------------------- 会员中心模块 --------------------------------------------------//
 
 //会员中心首页
-import userCenterIndex from './views/usercenter/usercenter'
+import userCenterIndex from './views/usercenter/index'
 //订单管理
 import orderControl from './views/usercenter/orderControl'
 //增值服务订单管理
@@ -55,6 +55,42 @@ import viewPassengers from './views/usercenter/viewPassengers'
 //常用地址
 import viewAddress from './views/usercenter/viewAddress'
 
+
+// ---------------------------------- 途家模块 --------------------------------------------------//
+//途家首页
+import tuJiaIndex from './views/tujia/index'
+
+// ---------------------------------- 增值服务模块 --------------------------------------------------//
+//增值服务首页
+import addServiceIndex from './views/addService/index'
+
+// ---------------------------------- 年票模块 --------------------------------------------------//
+//年票首页
+import annualTicketIndex from './views/annualTicket/index'
+
+// ---------------------------------- 航班动态模块 --------------------------------------------------//
+//航班动态首页
+import dynamicIndex from './views/dynamic/index'
+
+// ---------------------------------- 保险专区模块 --------------------------------------------------//
+//保险专区首页
+import insuranceIndex from './views/insurance/index'
+
+// ---------------------------------- 爱旅游模块 --------------------------------------------------//
+//爱旅游首页
+import iTourIndex from './views/iTour/index'
+
+// ---------------------------------- 关于我们模块 --------------------------------------------------//
+//关于我们首页
+import aboutIndex from './views/about/index'
+
+// ---------------------------------- 底部在线客服 --------------------------------------------------//
+//在线客服首页
+import onlineServerIndex from './views/onlineServer/index'
+
+// ---------------------------------- 底部新闻 --------------------------------------------------//
+//新闻首页
+import newsIndex from './views/news/index'
 
   export default [
   //重定向
@@ -114,10 +150,6 @@ import viewAddress from './views/usercenter/viewAddress'
   {
     path:'/user/orderControl',component:orderControl,name:"订单管理"
   },
-  // 订单管理
-  {
-    path:'/user/orderControl',component:orderControl,name:"订单管理"
-  },
   // 机票订单管理
   {
     path:'/user/orderControl/flightOrder',component:_Manage_FlightOrder,name:"机票订单"
@@ -162,8 +194,53 @@ import viewAddress from './views/usercenter/viewAddress'
   {
     path:'/user/viewAddress',component:viewAddress,name:'常用地址'
   },
+  //------------------------------------------途家酒店模块------------------------------------------------//
+  {
+    path:'/tujia',component:tuJiaIndex,name:'途家'
+  },
+
+  //------------------------------------------增值服务模块------------------------------------------------//
+  {
+    path:'/addService',component:addServiceIndex,name:'增值服务购买'
+  },
+
+  //------------------------------------------年票模块------------------------------------------------//
+  {
+    path:'/annualTicket',component:annualTicketIndex,name:'年票'
+  },
+
+  //------------------------------------------航班动态模块------------------------------------------------//
+  {
+    path:'/dynamic',component:dynamicIndex,name:'航班动态'
+  },
+
+  //------------------------------------------保险专区模块------------------------------------------------//
+  {
+    path:'/insurance',component:insuranceIndex,name:'保险专区'
+  },
+
+  //------------------------------------------爱旅游模块------------------------------------------------//
+  {
+    path:'/iTour',component:iTourIndex,name:'爱旅游'
+  },
+
+  //------------------------------------------关于我模块------------------------------------------------//
+  {
+    path:'/about',component:aboutIndex,name:'关于我们'
+  },  //------------------------------------------用户登录及注册-------------------------------------------------//
+
   // 用户登录
   {
     path:'/login',component:loginPage,name:"用户登录"
+  },
+
+  // 底部新闻
+  {
+    path:'/news',component:newsIndex,name:"新闻"
+  },
+
+  // 底部在线客服
+  {
+    path:'/onlineServer',component:onlineServerIndex,name:"在线客服"
   },
 ];

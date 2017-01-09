@@ -28,6 +28,7 @@
 			},
 			//回到首页
 			goHome(){
+				this.$store.dispatch('setPageChangeStatus','back'); //保存页面切换状态至全局
 				this.$router.push({path:'/index'});
 			}
 		}
