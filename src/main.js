@@ -3,7 +3,6 @@ import App from './App.vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
 import Mint from 'mint-ui';
-import scrollBehavior from './scrollBehavior';
 import resource from 'vue-resource';
 import { sync } from 'vuex-router-sync';
 import store from 'store'
@@ -14,9 +13,13 @@ Vue.use(VueRouter);
 Vue.use(resource);
 
 console.log(Mint);
+
 const router = new VueRouter({
+  // mode: 'history',
   routes,
-  scrollBehavior
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 
 //配置全局钩子用来拦截非登录状态下的路由跳转

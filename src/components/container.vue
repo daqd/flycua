@@ -38,8 +38,14 @@
   transform: translateX(-100%);
 }
 .slide-in-enter{
-  opacity: 0.5;
-  transform: translateX(100%);
+  transform: translate3d(50%, 0, 0);
+}
+.slide-in-enter{
+  transform: translate3d(80%, 0, 0);
+}
+.slide-in-enter{
+  transition: .25s all ease;
+  transform: translate3d(100%, 0, 0);
 }
 
 .slide-out-enter-active {
@@ -52,7 +58,13 @@
   transform: translateX(100%);
 }
 .slide-out-enter{
-
-  transform: translateX(-100%);
+  transform: translateX(-50%);
+}
+.slide-out-enter{
+  transform: translateX(-80%);
+}
+.slide-out-enter{
+  transition: .25s all ease;
+  transform: translate3d(-100%, 0, 0);
 }
 </style>

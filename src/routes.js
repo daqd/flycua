@@ -16,11 +16,19 @@ import flightQuery from './views/book/flightQuery'
   {
     path: '/', redirect: '/home'
   },
+  //错误页
+  // {
+  //   path: '*',
+  //   component: resolve => {
+  //           require(['./views/error/index.vue'], resolve)
+  //       },
+  //   name:'错误提示'
+  // },
   // 首页
   {
     path: '/home',
     component:home,
-    name:"中国联航"
+    name:"中国联航",
   },
   // 城市列表组件
   {

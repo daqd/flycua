@@ -1,6 +1,6 @@
 <template lang="html">
 <div>
-  <div class="onPxLineWrap paddingTopBottom">
+  <div class="onePxLineWrap paddingTopBottom">
     <div class="onePxLine">
       <div class="userCenterItemWrap">
         <div class="itemIcon">

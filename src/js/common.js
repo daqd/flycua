@@ -1,6 +1,6 @@
 /**
 * 获取指定日期的后一天
-* 
+*
 **/
 const getNextDay = d =>{
   d = new Date(d);
@@ -45,4 +45,11 @@ const doHandleMonth = month =>{
      return m;
 }
 
-export {getNextDay,getDay}
+//获取当前浏览器窗口大小
+const getWindowWith = function(){
+  let windowSize = {};
+  windowSize.windowWidth =  document.documentElement.clientWidth;
+  windowSize.windowHeight =  document.documentElement.clientHeight;
+  return windowSize;
+}
+export {getNextDay,getDay,getWindowWith}
