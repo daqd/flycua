@@ -196,7 +196,7 @@ methods:{
 .fq-banner{
   width: 100%;
   height: 200px;
-  background: url("../../assets/book/flightQueryBac.png") no-repeat;
+  background: url("../../assets/book/flightQueryBac.jpg") no-repeat;
   background-size: cover;
 }
 .flightQueryPageTip{

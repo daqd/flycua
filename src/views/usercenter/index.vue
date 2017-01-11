@@ -74,7 +74,7 @@ export default {
 .banner{
   width: 100%;
   height: 150px;
-  background: url("../../assets/usercenter/background.png") no-repeat;
+  background: url("../../assets/usercenter/background.jpg") no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;

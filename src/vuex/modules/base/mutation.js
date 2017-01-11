@@ -1,4 +1,5 @@
 import {
+  NOW_PATH,
   BACK_PATH,
   NEXT_PATH,
   PAGE_CHANGE_STATUS,
@@ -10,6 +11,10 @@ import {
 } from './mutation-types'
 
 const mutations = {
+  //设置当前路径
+  [NOW_PATH] (state, path) {
+    state.path = path
+  },
   //设置返回路径
   [BACK_PATH] (state, path) {
     state.backPath = path

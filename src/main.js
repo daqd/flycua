@@ -7,6 +7,7 @@ import scrollBehavior from './scrollBehavior';
 import resource from 'vue-resource';
 import { sync } from 'vuex-router-sync';
 import store from 'store'
+import setWechatTitle from './utils/setWechatTitle'
 
 Vue.use(Mint);
 Vue.use(VueRouter);
@@ -20,10 +21,13 @@ const router = new VueRouter({
 
 //配置全局钩子用来拦截非登录状态下的路由跳转
 router.beforeEach((to, from, next) => {
+  //存储当前路径
+  store.dispatch('setPath', to.path);
+
   //判断拦截，是否需要登录
   const pathArr = to.path.split('/');
   const toPath = pathArr[pathArr.length-1];
-  let noNeedLoginPage = ['index','airportList','calendar','flightQuery','flightList','login','tujia','addService','annualTicket','dynamic','insurance','iTour','about','onlineServer','news'];
+  let noNeedLoginPage = ['home','index','airportList','calendar','flightQuery','flightList','login','tujia','addService','annualTicket','dynamic','insurance','iTour','about','onlineServer','news'];
   if(noNeedLoginPage.indexOf(toPath)==-1 && !store.state.base.loginStatus){
     store.dispatch('setNextPath', to.path);
     next({path:'/login'});
@@ -38,6 +42,9 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   store.dispatch('setBackPath', from.path);
   store.dispatch('setHeaderTit', to.name);
+  //动态设置微信title
+  // let title = to.name;
+  // setWechatTitle(title)
 })
 
 sync(store, router);

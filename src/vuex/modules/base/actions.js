@@ -1,3 +1,8 @@
+//设置当前路径
+export const setPath = ({commit}, path) => {
+  commit('NOW_PATH', path)
+}
+
 //设置返回路径
 export const setBackPath = ({commit}, path) => {
   commit('BACK_PATH', path)

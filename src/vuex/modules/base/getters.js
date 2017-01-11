@@ -1,4 +1,5 @@
 //base
+export const getNowPath = state => state.path //获取当前路径
 export const getBackPath = state => state.backPath //获取返回路径
 export const getNextPath = state => state.nextPath //获取被中断的路径
 export const getPageChangeStatus = state => state.pageChangeStatus //获取被中断的路径
