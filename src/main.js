@@ -5,14 +5,21 @@ import routes from './routes';
 import Mint from 'mint-ui';
 import resource from 'vue-resource';
 import { sync } from 'vuex-router-sync';
-import store from 'store'
-import setWechatTitle from './utils/setWechatTitle'
+import store from 'store';
+import setWechatTitle from './utils/setWechatTitle';
+import VueLazyload from 'vue-lazyload';
 
 Vue.use(Mint);
 Vue.use(VueRouter);
 Vue.use(resource);
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'dist/error.png',
+  loading: 'dist/loading.gif',
+  attempt: 1
+})
 
-console.log(Mint);
+console.log(VueLazyload);
 
 const router = new VueRouter({
   // mode: 'history',
