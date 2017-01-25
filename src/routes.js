@@ -242,6 +242,13 @@ import flightQuery from './views/book/flightQuery'
         },
     name:'航班动态'
   },
+  {
+    path:'/dynamic/dynamicList',
+    component: resolve => {
+            require(['./views/dynamic/dynamicResault.vue'], resolve)
+        },
+    name:'航班动态列表'
+  },
 
   //------------------------------------------保险专区模块------------------------------------------------//
   {
