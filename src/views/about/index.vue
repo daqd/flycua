@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <mt-cell title="服务及投诉热线:" value="400-102-6666"></mt-cell>
     <mt-cell title="投诉与建议邮箱:" value="yijian@flycua.com"></mt-cell>
     <mt-cell title="传真:" value="010-67970053"></mt-cell>

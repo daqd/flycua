@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <!-- banner -->
     <div class="banner" :style="{height:windowWith+'px'}">
       <mt-swipe :auto="4000">

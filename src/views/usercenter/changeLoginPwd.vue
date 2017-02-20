@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     修改登录密码
   </div>
 </template>

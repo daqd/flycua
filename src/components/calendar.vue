@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="MARGIN-TOP-40-PX">
     <!-- 日历控件主体 -->
     <div class="weeks is-fixed">
       <ul class="is-fixed">
@@ -166,6 +166,7 @@ export default {
       }else if(this.$route.query.type=='dstDate'){
           this.$store.dispatch('setDstDate',day);
       }
+      this.$store.dispatch('setPageChangeStatus','back'); //保存页面切换状态至全局
       this.$router.go(-1);
     }
   },

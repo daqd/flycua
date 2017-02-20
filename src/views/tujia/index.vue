@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <!-- 搜索框 -->
     <mt-search
       :value.sync="value"

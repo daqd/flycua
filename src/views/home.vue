@@ -32,29 +32,23 @@
             <div class="flight_airport_date_wrap">
                     <div class="flight_airport_date_wrap_item" >
                         <div class="item_name"> 出发城市 </div>
-                          <div class="item_val item_airport_val textCenter" @click="toAirportListByOrg"> {{getFlightDetails.orgCityZh}}</div>
+                          <div class="item_val item_airport_val textCenter" @click="toAirportListByOrgDst('org')"> {{getFlightDetails.orgCityZh}}</div>
                     </div>
                 <div class="flight_airport_date_wrap_item">
                     <div class="item_name"> 出发日期 </div>
-                    <router-link :to="{ path: '/calendar', query: { type: 'orgDate'}}">
-                      <div class="item_val item_date_val textCenter"> {{getFlightDetails.orgDate}} </div>
-                    </router-link>
+                      <div class="item_val item_date_val textCenter" @click="toCalendarByOrgDst('org')"> {{getFlightDetails.orgDate}} </div>
                 </div>
             </div>
             <div class="change_airport_wrap" v-on:click="changeOrgDst"></div>
             <div class="flight_airport_date_wrap">
                 <div class="flight_airport_date_wrap_item">
                     <div class="item_name textRight"> 到达城市 </div>
-                    <router-link :to="{ path: '/airportList', query: { type: 'dstCity', fromPath:this.$route.path }}">
-                    <div class="item_val item_airport_val textCenter"> {{getFlightDetails.dstCityZh}} </div>
-                    </router-link>
+                    <div class="item_val item_airport_val textCenter" @click="toAirportListByOrgDst('dst')"> {{getFlightDetails.dstCityZh}} </div>
                 </div>
                 <transition name="fade">
                   <div class="flight_airport_date_wrap_item" v-show="getFlightType=='multiple'">
                       <div class="item_name textRight"> 到达日期 </div>
-                      <router-link :to="{ path: '/calendar', query: { type: 'dstDate'}}">
-                        <div class="item_val item_date_val textCenter"> {{getFlightDetails.dstDate}} </div>
-                      </router-link>
+                        <div class="item_val item_date_val textCenter" @click="toCalendarByOrgDst('dst')"> {{getFlightDetails.dstDate}} </div>
                   </div>
               </transition>
             </div>
@@ -205,9 +199,9 @@ export default {
     },
     created(){
       //初始化出发日期为今天的日期
-      this.$store.dispatch('setOrgDate',getDay(0));
+      //this.$store.dispatch('setOrgDate',getDay(0));
       //初始化到达日期为明天的日期
-      this.$store.dispatch('setDstDate',getDay(1));
+      //this.$store.dispatch('setDstDate',getDay(1));
     },
     attached() {},
     methods: {
@@ -236,9 +230,23 @@ export default {
       },
 
       //执行选择机场列表
-      toAirportListByOrg(){
+      toAirportListByOrgDst(type){
         this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
-        this.$router.push({path: '/airportList', query: { type: 'orgCity'}});
+        if(type=='org'){
+          this.$router.push({path: '/airportList', query: { type: 'orgCity'}});
+        }else if(type=='dst'){
+          this.$router.push({path: '/airportList', query: { type: 'dstCity'}});
+        }
+      },
+
+      //执行选择日历
+      toCalendarByOrgDst(type){
+        this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
+        if(type=='org'){
+          this.$router.push({path: '/calendar', query: { type: 'orgDate'}});
+        }else if(type=='dst'){
+          this.$router.push({path: '/calendar', query: { type: 'dstDate'}});
+        }
       },
       //执行查询
       toDoSearch(){

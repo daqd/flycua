@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <!-- 起降城市/航班号选项卡切换 -->
     <div class="tabs_wrap">
         <div class="tabs_wrap_item single" :class="{cur:getAddserviceType=='order'}" @click="changeType('order')">订单购买</div>

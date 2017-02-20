@@ -1,5 +1,5 @@
 <template lang="html">
-<div class="">
+<div class="MARGIN-TOP-40-PX">
   <!-- 行李 -->
   <div @click="toLuggagePage">
     <addService-item-component>

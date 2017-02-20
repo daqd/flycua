@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="entryModuleWrap">
+  <div class="MARGIN-TOP-40-PX entryModuleWrap">
     <component-orderControl-Item v-for="item in moduleArr" :order-type="item.name" :moduleClassName="item.className" :toPath="item.path"></component-orderControl-Item>
   </div>
 </template>

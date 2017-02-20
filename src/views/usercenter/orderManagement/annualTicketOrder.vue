@@ -1,5 +1,5 @@
 <template lang="html">
-<div class="">
+<div class="MARGIN-TOP-40-PX">
   增值服务订单
 </div>
 </template>

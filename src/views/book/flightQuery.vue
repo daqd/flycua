@@ -17,34 +17,26 @@
     <div class="fq-search-wrap">
       <!-- 第一列图标 -->
       <div class="fq-search-item-wrap">
-        <router-link :to="{ path: '/airportList', query: { type: 'orgCity'}}" tag="span">
           <div class="fq-search-item">
             <div class="fq-search-item-icon orgCityIcon"></div>
             <div class="fq-search-item-name">起始地</div>
-            <div class="fq-search-item-val"> {{getFlightDetails.orgCityZh}}</div>
+            <div class="fq-search-item-val" @click="toAirportListByOrgDst('org')"> {{getFlightDetails.orgCityZh}}</div>
           </div>
-        </router-link>
-        <router-link :to="{ path: '/airportList', query: { type: 'dstCity', fromPath:this.$route.path }}" tag="span">
         <div class="fq-search-item">
           <div class="fq-search-item-icon dstCityIcon"></div>
           <div class="fq-search-item-name">目的地</div>
-          <div class="fq-search-item-val"> {{getFlightDetails.dstCityZh}} </div>
+          <div class="fq-search-item-val" @click="toAirportListByOrgDst('dst')"> {{getFlightDetails.dstCityZh}} </div>
         </div>
-        </router-link>
-        <router-link :to="{ path: '/calendar', query: { type: 'orgDate'}}" tag="span">
         <div class="fq-search-item">
           <div class="fq-search-item-icon dateIcon"></div>
           <div class="fq-search-item-name">去程日期</div>
-          <div class="fq-search-item-val"> {{getFlightDetails.orgDate}}</div>
+          <div class="fq-search-item-val" @click="toCalendarByOrgDst('org')"> {{getFlightDetails.orgDate}}</div>
         </div>
-        </router-link>
-        <router-link :to="{ path: '/calendar', query: { type: 'dstDate'}}" tag="span">
         <div class="fq-search-item"  v-show="getFlightType=='multiple'">
           <div class="fq-search-item-icon dateIcon"></div>
           <div class="fq-search-item-name">返程日期</div>
-          <div class="fq-search-item-val"> {{getFlightDetails.dstDate}} </div>
+          <div class="fq-search-item-val" @click="toCalendarByOrgDst('dst')"> {{getFlightDetails.dstDate}} </div>
         </div>
-        </router-link>
       </div>
       <div class="fq-search-changeIcon" @click="changeOrgDst">
 
@@ -129,10 +121,7 @@ ready() {
 
 },
 created(){
-  //初始化出发日期为今天的日期
-  this.$store.dispatch('setOrgDate',getDay(0));
-  //初始化到达日期为明天的日期
-  this.$store.dispatch('setDstDate',getDay(1));
+
 },
 methods:{
   //乘机人数量选择组件状态管理
@@ -158,6 +147,25 @@ methods:{
   //切换往返程信息
   changeOrgDst(){
     this.$store.dispatch('changeOrgDstMes');
+  },
+  //执行选择机场列表
+  toAirportListByOrgDst(type){
+    this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
+    if(type=='org'){
+      this.$router.push({path: '/airportList', query: { type: 'orgCity'}});
+    }else if(type=='dst'){
+      this.$router.push({path: '/airportList', query: { type: 'dstCity'}});
+    }
+  },
+
+  //执行选择日历
+  toCalendarByOrgDst(type){
+    this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
+    if(type=='org'){
+      this.$router.push({path: '/calendar', query: { type: 'orgDate'}});
+    }else if(type=='dst'){
+      this.$router.push({path: '/calendar', query: { type: 'dstDate'}});
+    }
   },
 
   //执行查询

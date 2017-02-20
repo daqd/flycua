@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <!-- 航班信息 -->
     <div class="flightInfoWrap">
       <!-- 座位类别 -->

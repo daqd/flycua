@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="MARGIN-TOP-40-PX">
     机票订单管理
   </div>
 </template>

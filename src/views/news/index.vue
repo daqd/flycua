@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <mt-cell v-for="item in newsArr" title="新闻标题" is-link></mt-cell>
   </div>
 </template>

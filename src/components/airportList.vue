@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="MARGIN-TOP-40-PX">
       <!-- 城市列表搜索组件 -->
       <mt-search
         cancel-text="取消"
@@ -82,6 +82,7 @@
               dstCityCodeVal:cityCode
             });
         }
+        this.$store.dispatch('setPageChangeStatus','back'); //保存页面切换状态至全局
         this.$router.go(-1);
       }
     },

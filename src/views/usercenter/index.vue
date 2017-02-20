@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <div class="banner">
       <div class="userInfo">
         <div class="userPic">

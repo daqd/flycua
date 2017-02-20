@@ -6,7 +6,7 @@
 			</div>
 			<div slot="right" class="goHomeIcon" @click="goHome"></div>
 		</mt-header>
-		<div style="margin-top:40px;" v-if="getHeaderTit!='中国联航' && getHeaderTit!='航班查询'">
+
 	</div>
 </div>
 </template>

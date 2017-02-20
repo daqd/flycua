@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <!-- 提示信息 -->
     <!-- <div class="loginTip">
       测试用户名：米梦宇 - 密码：123456

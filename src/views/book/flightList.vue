@@ -1,5 +1,5 @@
 <template lang="html">
-<div class="">
+<div class="MARGIN-TOP-40-PX">
   <!-- 提示信息 -->
   <mt-popup v-model="popupVisible" position="top" pop-transition="popup-fade" modal="false">
     <div style="width:100%;height:auto;margin-top:40px;padding:10px 0">

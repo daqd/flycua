@@ -1,5 +1,5 @@
 <template lang="html">
-<div class="">
+<div class="MARGIN-TOP-40-PX">
   酒店订单管理
 </div>
 </template>

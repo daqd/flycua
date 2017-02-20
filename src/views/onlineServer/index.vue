@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div class="MARGIN-TOP-40-PX">
     <div class="">
       <mt-cell v-for="item in onlineServerArr" title="常见问题项" is-link></mt-cell>
     </div>

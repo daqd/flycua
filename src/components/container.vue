@@ -8,17 +8,24 @@
   </div>
 </template>
 <script>
+import {getDay,getNextDay} from '../js/common';
   export default {
     data(){
       return{
         transitionName:''
       }
     },
+    created(){
+      //初始化出发日期为今天的日期
+      this.$store.dispatch('setOrgDate',getDay(0));
+      //初始化到达日期为明天的日期
+      this.$store.dispatch('setDstDate',getDay(1));
+    },
     // watch $route 决定使用哪种过渡
     watch: {
       '$route' (to, from) {
         //console.log(this.$store.state.base.pageChangeStatus);
-        this.$data.transitionName = this.$store.state.base.pageChangeStatus=="go"?'slide-in':'slide-out';
+        this.$data.transitionName = this.$store.state.base.pageChangeStatus=="go"?'vux-pop-in':'vux-pop-out';
       }
     }
   }
@@ -67,4 +74,93 @@
   transition: .25s all ease;
   transform: translate3d(-100%, 0, 0);
 }
+
+
+
+/** 平滑过渡V2 **/
+/**
+* vue-router transition
+*/
+.vux-pop-out-enter-active,
+.vux-pop-out-leave-active,
+.vux-pop-in-enter-active,
+.vux-pop-in-leave-active {
+  width: 100%;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  backface-visibility: hidden;
+  top: 0;
+  position: absolute;
+}
+
+.vux-pop-out-enter,
+.vux-pop-out-leave,
+.vux-pop-in-enter,
+.vux-pop-in-leave {
+  will-change: transform;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.vux-pop-out-enter-active {
+  animation-name: popInLeft;
+}
+
+.vux-pop-out-leave-active {
+  animation-name: popOutRight;
+}
+
+.vux-pop-in-enter-active {
+  perspective: 1000;
+  animation-name: popInRight;
+}
+
+.vux-pop-in-leave-active {
+  animation-name: popOutLeft;
+}
+
+@keyframes popInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes popOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes popInRight {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes popOutRight {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
 </style>
