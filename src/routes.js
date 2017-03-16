@@ -233,6 +233,13 @@ import flightQuery from './views/book/flightQuery'
         },
     name:'年票'
   },
+    {
+    path:'/annualTicketList',
+    component: resolve => {
+            require(['./views/annualTicket/annualTicketList.vue'], resolve)
+        },
+    name:'年票列表'
+  },
 
   //------------------------------------------航班动态模块------------------------------------------------//
   {

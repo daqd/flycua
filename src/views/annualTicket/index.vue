@@ -18,7 +18,7 @@
       </div>
     </div>
     <!-- 查询按钮 -->
-    <div class="queryBtn">
+    <div class="queryBtn" @click="toAnnualTicketList">
       <mt-button size="large" type="danger">查 询</mt-button>
     </div>
     <!-- 提示标题 -->
@@ -47,6 +47,17 @@
 
 <script>
 export default {
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+    toAnnualTicketList(){
+      this.$store.dispatch('setPageChangeStatus','go'); //保存页面切换状态至全局
+      this.$router.push({path: '/annualTicketList'});
+    },
+  }
 }
 </script>
 

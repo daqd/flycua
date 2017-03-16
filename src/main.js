@@ -37,7 +37,7 @@ router.beforeEach((to, from, next) => {
   //判断拦截，是否需要登录
   const pathArr = to.path.split('/');
   const toPath = pathArr[pathArr.length-1];
-  let noNeedLoginPage = ['home','index','airportList','calendar','flightQuery','flightList','login','tujia','addService','annualTicket','dynamic','insurance','iTour','about','onlineServer','news','dynamicList'];
+  let noNeedLoginPage = ['home','index','airportList','calendar','flightQuery','flightList','login','tujia','addService','annualTicket','annualTicketList','dynamic','insurance','iTour','about','onlineServer','news','dynamicList'];
   if(noNeedLoginPage.indexOf(toPath)==-1 && !store.state.base.loginStatus){
     store.dispatch('setNextPath', to.path);
     next({path:'/login'});
