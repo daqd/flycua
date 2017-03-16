@@ -12,12 +12,12 @@ import VueLazyload from 'vue-lazyload';
 Vue.use(Mint);
 Vue.use(VueRouter);
 Vue.use(resource);
-Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  error: 'dist/error.png',
-  loading: 'dist/loading.gif',
-  attempt: 1
-})
+// Vue.use(VueLazyload, {
+//   preLoad: 1.3,
+//   error: 'dist/error.png',
+//   loading: 'dist/loading.gif',
+//   attempt: 1
+// })
 
 // console.log(VueLazyload);
 
